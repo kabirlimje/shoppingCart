@@ -1,5 +1,11 @@
+import { useContext, useEffect } from 'react';
+import { UserContext } from '../context/UserContext';
 import '../styles/Login.css';
 function Login() {
+  const userData = useContext(UserContext);
+  useEffect(() => {
+    console.log("get the value from the localStorage ==>", userData);
+  }, [userData]);
   return (
     <>
       <div className="loginLayout">

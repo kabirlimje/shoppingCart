@@ -15,7 +15,9 @@ function Register() {
     if (listOfRegisterData !== null) {
       localStorage.setItem("registerData", JSON.stringify(listOfRegisterData));
     }
-  }, [listOfRegisterData])
+
+    console.log("see the data ===>", listOfRegisterData);
+  }, [listOfRegisterData]);
 
   return (
     <>
@@ -27,11 +29,7 @@ function Register() {
           <input type="password" placeholder="confirm password" name="confirmpassword" onChange={addTheDataIntoLocalStorage} />
           {/* here check password should be same */}
           <button
-            onClick={() => {
-              setListOfRegisterData((prev) => ([...prev, registerData]))
-              console.log("see the user data =>", registerData);
-              console.log("see the localStorage =>", localStorage.getItem("registerData"));
-            }}>
+            onClick={() => setListOfRegisterData((prev) => ([...prev ?? [], registerData]))}>
             Sign UP
           </button> {/* move to the login page */}
         </div>
@@ -41,5 +39,3 @@ function Register() {
 }
 
 export default Register;
-
-// register data will stored in the localStorage
